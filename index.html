@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page-title">作品集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== 背景网格 ===== -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- ===== 1. 顶部导航 ===== -->
+  <header class="navbar" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">
+        <span class="logo-dot"></span><span data-i18n="logo">永远相信美好的事情即将发生</span>
+      </a>
+      <nav>
+        <a href="#work"     data-i18n="nav-work">作品</a>
+        <a href="#about"    data-i18n="nav-about">关于</a>
+        <a href="#skill"    data-i18n="nav-skill">技能</a>
+        <a href="#contact"  data-i18n="nav-contact">联系</a>
+      </nav>
+      <div class="nav-right">
+        <button class="lang-toggle" id="langBtn" aria-label="Switch language">
+          <span class="lang-zh is-active">中</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-en">EN</span>
+        </button>
+        <a href="作品简历.pdf" target="_blank" class="btn-resume" data-i18n="btn-resume">简历</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 2. 首屏 Hero ===== -->
+  <section class="hero">
+    <span class="tape tape-blue"   style="top: 38%; left: 4%;"></span>
+    <span class="tape tape-yellow" style="top: 46%; left: 0%;"></span>
+    <span class="tape tape-pink"   style="top: 58%; left: 18%;"></span>
+
+    <svg class="doodle doodle-right" viewBox="0 0 400 300" aria-hidden="true">
+      <path d="M 50 150 C 80 50, 200 250, 250 120 S 350 200, 380 80" />
+      <path d="M 60 200 C 100 100, 180 230, 230 150" />
+      <path d="M 120 250 C 150 180, 220 270, 280 200" />
+    </svg>
+
+    <div class="container hero-inner">
+      <p class="kicker fade-up" data-i18n="kicker">科技师 / AI 创作</p>
+      <h1 class="hero-title">
+        <span class="char" style="--i:0">無</span><span class="char" style="--i:1">限</span><span class="char" style="--i:2">進</span><span class="char" style="--i:3">步</span>
+      </h1>
+      <p class="hero-sub fade-up" data-i18n="hero-sub">
+        软件专业出身，专注把品牌信息、节奏和视觉想象做成清晰、有记忆点的动态影像。
+      </p>
+      <div class="hero-actions fade-up">
+        <a href="#work"    class="btn btn-dark"  data-i18n="btn-view-work">查看作品</a>
+        <a href="#contact" class="btn btn-light" data-i18n="btn-contact">联系合作</a>
+      </div>
+
+      <div class="hero-meta fade-up">
+        <div class="meta-row">
+          <span class="meta-label" data-i18n="meta-coverage-label">覆盖类型</span>
+          <span class="meta-value" data-i18n="meta-coverage-value">项目管理 / 系统架构设计 / 前后端开发 / 数据库设计 / 测试与运维</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label" data-i18n="meta-method-label">创作方法</span>
+          <span class="meta-value" data-i18n="meta-method-value">Java/Python + SpringBoot/MyBatis 全栈开发 + AI 辅助代码生成</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="hero-footer-tag fade-up" data-i18n="hero-footer-tag">welcome / AI GENERATED IDEA</p>
+  </section>
+
+  <!-- ===== 3. 作品项目 ===== -->
+  <section id="work" class="work">
+    <div class="container">
+      <p class="eyebrow fade-up"     data-i18n="eyebrow-work">SELECTED WORK</p>
+      <h2 class="section-title fade-up" data-i18n="work-title">無限進步</h2>
+      <p class="section-desc fade-up"  data-i18n="work-desc">
+        作品按素材类型整理，点击卡片可以查看该分类下的视频内容。
+      </p>
+
+      <div class="filter fade-up">
+        <button class="chip is-active" data-filter="all"          data-i18n="filter-all">全部</button>
+        <button class="chip"           data-filter="web"          data-i18n="filter-web">Web项目</button>
+        <button class="chip"           data-filter="backend"     data-i18n="filter-backend">后端服务</button>
+        <button class="chip"           data-filter="mini-program" data-i18n="filter-mini">小程序</button>
+        <button class="chip"           data-filter="tiktok"      data-i18n="filter-tiktok">Tiktok 作品</button>
+        <button class="chip"           data-filter="ai"          data-i18n="filter-ai">AI作品</button>
+        <button class="chip"           data-filter="devops"      data-i18n="filter-devops">运维部署</button>
+      </div>
+
+      <div class="work-grid" id="workGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== 4. About ===== -->
+  <section id="about" class="about">
+    <div class="container">
+      <p class="eyebrow fade-up"        data-i18n="eyebrow-about">ABOUT</p>
+      <h2 class="section-title fade-up" data-i18n-html="about-title">软件工程专业出身，<br>爱探索，也爱创新。</h2>
+      <p class="section-desc fade-up"   data-i18n="about-desc">
+        项目经历覆盖系统架构设计、前后端开发、数据库设计与性能优化，含 Web 应用、小程序及企业级项目。
+        能够快速理解业务需求，并熟练借助 AI 辅助代码开发与问题排查。
+      </p>
+
+      <div class="about-stats fade-up">
+        <div class="stat">
+          <div class="stat-num" data-target="3">3</div>
+          <div class="stat-label" data-i18n="stat-label-1">项目类型</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">AGENT AI</div>
+          <div class="stat-label" data-i18n="stat-label-2">核心方向</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-i18n="stat-num-3">偶尔手搓</div>
+          <div class="stat-label" data-i18n="stat-label-3">传统工作</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. Workflow ===== -->
+  <section class="workflow">
+    <div class="container">
+      <p class="eyebrow fade-up"        data-i18n="eyebrow-workflow">WORKFLOW</p>
+      <h2 class="section-title fade-up" data-i18n="workflow-title">从需求到动态表达</h2>
+
+      <div class="flow-grid">
+        <div class="flow-card flow-yellow fade-up">
+          <div class="flow-num">01</div>
+          <h3 data-i18n="flow-title-1">理解目标</h3>
+          <p  data-i18n="flow-desc-1">先明确用户场景、业务目标和技术优先级，让方案服务于核心需求。</p>
+        </div>
+        <div class="flow-card flow-blue fade-up">
+          <div class="flow-num">02</div>
+          <h3 data-i18n="flow-title-2">建立节奏</h3>
+          <p  data-i18n="flow-desc-2">用架构设计、模块拆分和接口定义组织开发路径，确保可维护与可扩展。</p>
+        </div>
+        <div class="flow-card flow-pink fade-up">
+          <div class="flow-num">03</div>
+          <h3 data-i18n="flow-title-3">AI 辅助扩展</h3>
+          <p  data-i18n="flow-desc-3">结合 Copilot、GPT 提升代码生成、问题排查和文档编写效率。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. Skill ===== -->
+  <section id="skill" class="skill">
+    <div class="container">
+      <p class="eyebrow fade-up"        data-i18n="eyebrow-skill">TOOLKIT</p>
+      <h2 class="section-title fade-up" data-i18n="skill-title">技能 / 软件</h2>
+
+      <div class="skill-grid fade-up">
+        <div class="skill-item">
+          <div class="skill-mark">Cu</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-1">Cursor</h4>
+            <p  data-i18n="skill-desc-1">辅助开发工具</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-mark">Co</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-2">Codex</h4>
+            <p  data-i18n="skill-desc-2">办公帮手 / 节奏控制</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-mark">即</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-3">即梦</h4>
+            <p  data-i18n="skill-desc-3">AI 视频 / 画面生成</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-mark">灵</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-4">可灵</h4>
+            <p  data-i18n="skill-desc-4">AI 视频 / 内容生成</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-mark">G</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-5">GPT</h4>
+            <p  data-i18n="skill-desc-5">AI 辅助 / 灵感拓展</p>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-mark">Ms</div>
+          <div class="skill-info">
+            <h4 data-i18n="skill-name-6">Mysql</h4>
+            <p  data-i18n="skill-desc-6">数据库 / 存储</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. Contact ===== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <p class="eyebrow fade-up"        data-i18n="eyebrow-contact">CONTACT</p>
+      <h2 class="section-title fade-up" data-i18n-html="contact-title">一起做一个<br>更会动的想法。</h2>
+      <p class="section-desc fade-up"   data-i18n="contact-desc">
+        欢迎联系求职机会、项目合作或作品集交流。
+      </p>
+
+      <div class="contact-grid fade-up">
+        <a class="contact-card" href="tel:13902698916">
+          <span class="contact-label"  data-i18n="contact-label-1">电话 / TEL</span>
+          <span class="contact-value">13902698916</span>
+          <span class="contact-action" data-i18n="contact-action-1">复制电话 →</span>
+        </a>
+        <a class="contact-card" href="mailto:3478185561@qq.com">
+          <span class="contact-label"  data-i18n="contact-label-2">邮箱 / EMAIL</span>
+          <span class="contact-value">3478185561@qq.com</span>
+          <span class="contact-action" data-i18n="contact-action-2">复制邮箱 →</span>
+        </a>
+        <a class="contact-card" href="作品简历.pdf" target="_blank">
+          <span class="contact-label"  data-i18n="contact-label-3">简历 / RESUME</span>
+          <span class="contact-value">resume.pdf</span>
+          <span class="contact-action" data-i18n="contact-action-3">查看简历 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. 页脚 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer">© 2026 开发 with AI，让想象被看见。</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
