@@ -16,12 +16,12 @@ const i18n = {
     "btn-resume": "简历",
 
     "kicker": "科技师 / AI 创作",
-    "hero-sub": "软件专业出身，专注把品牌信息、节奏和视觉想象做成清晰、有记忆点的动态影像。",
+    "hero-sub": "软件专业出身，专注把业务需求做成稳定、好用的 Web 应用与小程序，并用 AI 持续提升开发效率。",
     "btn-view-work": "查看作品",
     "btn-contact": "联系合作",
     "meta-coverage-label": "覆盖类型",
     "meta-coverage-value": "项目管理 / 系统架构设计 / 前后端开发 / 数据库设计 / 测试与运维",
-    "meta-method-label": "创作方法",
+    "meta-method-label": "技术栈",
     "meta-method-value": "Java/Python + SpringBoot/MyBatis 全栈开发 + AI 辅助代码生成",
     "hero-footer-tag": "welcome / AI GENERATED IDEA",
 
@@ -43,7 +43,7 @@ const i18n = {
     "stat-label-1": "项目类型",
     "stat-label-2": "核心方向",
     "stat-label-3": "传统工作",
-    "stat-num-3": "偶尔手搓",
+    "stat-num-3": "手工打磨",
 
     "eyebrow-workflow": "WORKFLOW",
     "workflow-title": "从需求到动态表达",
