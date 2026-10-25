@@ -157,6 +157,13 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
   -webkit-backdrop-filter: blur(14px) saturate(1.4);
   border-bottom: 1px solid var(--line);
 }
+/* 顶部阅读进度条：随页面滚动从左向右填满 */
+.scroll-progress {
+  position: absolute; left: 0; bottom: 0; height: 3px; width: 100%;
+  background: var(--accent); z-index: 5;
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform .15s linear; pointer-events: none;
+}
 .nav-inner {
   max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px);
   height: var(--nav-h); display: flex; align-items: center; gap: 12px;
@@ -232,6 +239,26 @@ html:not(.is-dark) .icon-sun { display: none; }
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(40px, 28px) scale(1.12); }
 }
+/* FlClash 式漂浮装饰：斜胶囊与小圆，持续缓慢滑动 */
+.shape {
+  position: absolute; z-index: 0; pointer-events: none;
+  border-radius: 999px; background: var(--c, var(--oat)); opacity: .42;
+  animation: shape-drift var(--t, 12s) ease-in-out var(--d, 0s) infinite alternate;
+}
+.shape.circle { border-radius: 50%; }
+@keyframes shape-drift {
+  from { transform: translate(0, 0) rotate(var(--r, 45deg)); }
+  to { transform: translate(var(--dx, 26px), var(--dy, 20px)) rotate(calc(var(--r, 45deg) + 12deg)); }
+}
+.s1{ --c:var(--oat);   --r:45deg;  --t:11s;             left:3%;   top:12%;   width:96px;  height:34px; }
+.s2{ --c:var(--rose);  --t:9s;     --d:.6s;  --dx:18px; --dy:26px;  left:11%;  top:54%;   width:44px;  height:44px; }
+.s3{ --c:var(--lilac); --r:32deg;  --t:13s;  --d:.3s;  --dx:30px; --dy:-20px; left:6%;   bottom:12%; width:124px; height:40px; }
+.s4{ --c:var(--oat);   --t:10s;    --d:1s;   --dx:22px; --dy:18px;  right:6%;  top:16%;   width:58px;  height:58px; }
+.s5{ --c:var(--slate); --r:45deg;  --t:12s;  --d:.2s;  --dx:-24px; --dy:22px; right:12%; top:44%;  width:104px; height:36px; }
+.s6{ --c:var(--rose);  --r:35deg;  --t:14s;  --d:.8s;  --dx:28px; --dy:-24px; right:4%;  bottom:18%; width:132px; height:44px; }
+.s7{ --c:var(--sage);  --t:8.5s;   --d:.4s;  --dx:16px; --dy:-18px; left:30%;  bottom:7%; width:36px;  height:36px; }
+.s8{ --c:var(--g3);    --r:60deg;  --t:10s;  --d:1.2s; --dx:-20px; --dy:16px; right:27%; top:9%;   width:84px;  height:28px; }
+@media (max-width: 860px) { .s4, .s5, .s8 { display: none; } }
 .hero-inner {
   position: relative; z-index: 1;
   max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px);
@@ -721,6 +748,7 @@ html:not(.is-dark) .icon-sun { display: none; }
       </button>
     </div>
   </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 </header>
 
 <main id="main">
@@ -729,6 +757,14 @@ html:not(.is-dark) .icon-sun { display: none; }
   <section class="hero">
     <div class="blob blob-1" aria-hidden="true"></div>
     <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="shape s1" aria-hidden="true"></div>
+    <div class="shape circle s2" aria-hidden="true"></div>
+    <div class="shape s3" aria-hidden="true"></div>
+    <div class="shape circle s4" aria-hidden="true"></div>
+    <div class="shape s5" aria-hidden="true"></div>
+    <div class="shape s6" aria-hidden="true"></div>
+    <div class="shape circle s7" aria-hidden="true"></div>
+    <div class="shape s8" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-copy">
         <!-- ✏️ 打招呼 / 名字 / 打字机文案（在 JS 里改 TYPE_STRINGS） -->
@@ -1452,6 +1488,7 @@ html:not(.is-dark) .icon-sun { display: none; }
   /* ---------- 回到顶部 + 进度环 ---------- */
   var toTop = document.getElementById('toTop');
   var ringEl = document.getElementById('ttRing');
+  var barEl = document.getElementById('scrollProgress');
   var CIRC = 125.66;
   function onScroll() {
     var y = window.scrollY || document.documentElement.scrollTop || 0;
@@ -1459,6 +1496,7 @@ html:not(.is-dark) .icon-sun { display: none; }
     var max = document.documentElement.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(y / max, 1) : 0;
     if (ringEl) ringEl.style.strokeDashoffset = String(CIRC * (1 - p));
+    if (barEl) barEl.style.transform = 'scaleX(' + p + ')';
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
